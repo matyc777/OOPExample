@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace OOPExample
 {
@@ -7,8 +8,8 @@ namespace OOPExample
     {
         static public void WriteFile(List<string> Text)
         {
-            FileStream File = new FileStream("Figures.txt", FileMode.Append, FileAccess.Write);
-            StreamWriter write = new StreamWriter(File);
+            FileStream File = new FileStream("Figures.txt", FileMode.Create, FileAccess.Write);
+            StreamWriter write = new StreamWriter(File, Encoding.Unicode);
             foreach (string str in Text)
             {
                 write.WriteLine(str);

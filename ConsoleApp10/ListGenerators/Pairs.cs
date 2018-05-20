@@ -4,28 +4,33 @@ using System.Collections.Generic;
 
 namespace OOPExample
 {
-    class Pairs : IEnumerator
+    class Pairs : IEnumerator, IPairsList
     {
-        List<(double Min, double Max)> pairs;
+        List<(double Min, double Max)> pairsList;
         int position = -1;
 
         public Pairs(int Number, double Max)
         {
             double step = Max / Number;
-            pairs = new List<(double Min, double Max)>();
+            pairsList = new List<(double Min, double Max)>();
             (double Min, double Max) pair = (0, step);
             while (pair.Max <= Max)
             {
-                pairs.Add(pair);
+                pairsList.Add(pair);
                 pair.Min += step;
                 pair.Max += step;
             }
         }
 
+        List<(double Min, double Max)> IPairsList.GetPairsList()
+        {
+            return pairsList;
+        }
+
         public bool MoveNext()
         {
             position++;
-            return (position < pairs.Capacity);
+            return (position < pairsList.Capacity);
         }
 
         public void Reset()
@@ -47,18 +52,13 @@ namespace OOPExample
             {
                 try
                 {
-                    return pairs[position];
+                    return pairsList[position];
                 }
                 catch (IndexOutOfRangeException)
                 {
                     throw new InvalidOperationException();
                 }
             }
-        }
-
-        public List<(double Min, double Max)> GetPairs
-        {
-            get { return pairs; }
         }
     }
 }

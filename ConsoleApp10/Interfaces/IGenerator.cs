@@ -1,6 +1,6 @@
 ﻿namespace OOPExample
 {
-    interface IGenerator
+    interface IGenerator<T>
     {
         Figure Generate();
     }

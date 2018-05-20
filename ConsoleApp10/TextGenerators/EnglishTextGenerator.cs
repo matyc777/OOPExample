@@ -20,6 +20,7 @@ namespace OOPExample
                     }
                 }
             }
+
             return Text;
         }
     }

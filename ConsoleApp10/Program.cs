@@ -1,21 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using StructureMap;
 
 namespace OOPExample
 {
     class Program
     {
+        static public IContainer container;
+
         static void Main(string[] args)//количество фигур, количество групп
         {
+            container = ContainerClass.GenerateContainer(int.Parse(args[0]), int.Parse(args[1]));
+            
             try
-            {
-                IListGenerator list = new FullListGenerator(int.Parse(args[0]), int.Parse(args[1]));
-                ITextGenerator Text = new EnglishTextGenerator();
-                FileOutput.WriteFile(Text.GenerateText(list.ListGenerate() as IEnumerable<Tuple<List<Figure>, (double Min, double Max)>>));
+            { 
+                IContentGenerator content = new ContentGenerator();
+
+                ITextGenerator Text = container.GetInstance<ITextGenerator>();
+
+                FileOutput.WriteFile(Text.GenerateText(content.GenerateContent() as IEnumerable<Tuple<List<Figure>, (double Min, double Max)>>));
             }
-            catch
+            catch(Exception ex)
             {
-                Console.WriteLine("Введены некорректные параметры");
+                Console.WriteLine(ex.ToString());
+                Console.ReadKey();
             }
         }
     }

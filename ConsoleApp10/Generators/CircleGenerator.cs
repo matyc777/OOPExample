@@ -2,12 +2,13 @@
 
 namespace OOPExample
 {
-    class CircleGenerator : IGenerator
+    class CircleGenerator<T> : IGenerator<T>
     {
-        IRandom rd = new RandomValue();
-        Figure IGenerator.Generate()
+        IRandom random = Program.container.GetInstance<IRandom>();
+
+        Figure IGenerator<T>.Generate()
         {
-            return Activator.CreateInstance(typeof(Circle), rd.GetDouble(1.0, 50)) as Figure;
+            return Activator.CreateInstance(typeof(T), random.GetDouble(1.0, 50)) as Figure;
         }
     }
 }

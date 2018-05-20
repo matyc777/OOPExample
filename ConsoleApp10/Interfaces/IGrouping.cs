@@ -4,6 +4,6 @@ namespace OOPExample
 {
     interface IGrouping
     {
-        List<List<Figure>> Grouping(int Number, List<Figure> list);
+        List<List<Figure>> Grouping(List<Figure> list);
     }
 }
