@@ -8,8 +8,14 @@ namespace OOPExample
     {
         List<(double Min, double Max)> pairsList;
         int position = -1;
+        int Number;
 
-        public Pairs(int Number, double Max)
+        public Pairs(int Number)
+        {
+            this.Number = Number;
+        }
+
+        List<(double Min, double Max)> IPairsList.GetPairsList(double Max)
         {
             double step = Max / Number;
             pairsList = new List<(double Min, double Max)>();
@@ -20,10 +26,6 @@ namespace OOPExample
                 pair.Min += step;
                 pair.Max += step;
             }
-        }
-
-        List<(double Min, double Max)> IPairsList.GetPairsList()
-        {
             return pairsList;
         }
 

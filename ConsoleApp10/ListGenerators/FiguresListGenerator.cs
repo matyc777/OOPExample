@@ -4,7 +4,7 @@ namespace OOPExample
 {
     class FiguresListGenerator : IFigureListGenerator
     {
-        List<IGenerator<Figure>> Generators;
+        List<IGenerator> Generators;
         public List<Figure> Figures { get; set; }
         IRandom random;
         int Number;
@@ -17,11 +17,11 @@ namespace OOPExample
 
         object IFigureListGenerator.GenerateList()
         {
-            Generators = new List<IGenerator<Figure>>();//------------------------2
+            Generators = new List<IGenerator>();
             Figures = new List<Figure>();
-            Generators.Add(Program.container.GetInstance<IGenerator<Circle>>() as IGenerator<Figure>);
-            Generators.Add(Program.container.GetInstance<IGenerator<Square>>() as IGenerator<Figure>);//new SquareGenerator()
-            Generators.Add(Program.container.GetInstance<IGenerator<Rhombus>>() as IGenerator<Figure>);
+            Generators.Add(new CircleGenerator());
+            Generators.Add(new SquareGenerator());
+            Generators.Add(new RhombusGenerator());
             for (int i = 0; i < Number; i++)
             {
                 Figures.Add(Generators[random.GetInt(0, 2)].Generate());

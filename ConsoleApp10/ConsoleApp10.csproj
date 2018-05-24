@@ -52,6 +52,7 @@
     <Compile Include="Figures\Circle.cs" />
     <Compile Include="Figures\Figure.cs" />
     <Compile Include="Interfaces\IFigureListGenerator.cs" />
+    <Compile Include="Interfaces\IOutput.cs" />
     <Compile Include="Interfaces\IPairsList.cs" />
     <Compile Include="Interfaces\ITextGenerator.cs" />
     <Compile Include="ListGenerators\ContentGenerator.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Interfaces\IGrouping.cs" />
     <Compile Include="ListGenerators\Pairs.cs" />
     <Compile Include="Grouping\Group.cs" />
+    <Compile Include="Output\HtmlFileOutput.cs" />
     <Compile Include="Random\RandomValue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,7 +74,7 @@
     <Compile Include="Sorting\SortFigures.cs" />
     <Compile Include="Interfaces\ISort.cs" />
     <Compile Include="Figures\Square.cs" />
-    <Compile Include="Output\FileOutput.cs" />
+    <Compile Include="Output\TextFileOutput.cs" />
     <Compile Include="TextGenerators\RussianTextGenerator.cs" />
     <Compile Include="TextGenerators\EnglishTextGenerator.cs" />
   </ItemGroup>

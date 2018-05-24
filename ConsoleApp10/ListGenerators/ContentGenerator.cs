@@ -18,12 +18,12 @@ namespace OOPExample
 
             group = Program.container.GetInstance<IGrouping>();
 
-            pairs = new Pairs(20, FiguresListGenerator.GetMax(Figures));//-------1
+            pairs = new Pairs(20);
         }
 
         object IContentGenerator.GenerateContent()
         {
-            return group.Grouping(Figures).Zip(pairs.GetPairsList(), (first, second) 
+            return group.Grouping(Figures).Zip(pairs.GetPairsList(FiguresListGenerator.GetMax(Figures)), (first, second) 
                 => new Tuple<List<Figure>, (double Min, double Max)>(first, second)) as object;
         }
     }
